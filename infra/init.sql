@@ -34,18 +34,29 @@ CREATE TABLE pedido (
 
 INSERT INTO gerente (nome, email, senha) VALUES
 ('Carlos Andrade', 'carlos@restaurante.com', 'senha123'),
-('Fernanda Lima', 'fernanda@restaurante.com', 'seguro456');
+('Fernanda Lima', 'fernanda@restaurante.com', 'seguro456'); 
+('Lucas Martins', 'lucas@restaurante.com', 'admin789'),
+('Juliana Rocha', 'juliana@restaurante.com', 'chef2025');
+('Junim Péroxo', 'junimnim@restaurante.com', 'gerente123');
+
+
 
 INSERT INTO cliente (nome, email, endereco, telefone) VALUES
 ('João Silva', 'joao@gmail.com', 'Rua A, 123', '11988887777'),
 ('Maria Oliveira', 'maria@gmail.com', 'Rua B, 456', '11999996666'),
 ('Pedro Costa', 'pedro@gmail.com', 'Rua C, 789', '11977775555');
+('Ana Beatriz', 'ana@gmail.com', 'Rua D, 321', '11966668888'),
+('Ricardo Mendes', 'ricardo@gmail.com', 'Rua E, 654', '11955554444');
+
 
 INSERT INTO prato (nome, descricao, preco, id_gerente) VALUES
 ('Lasanha à Bolonhesa', 'Massa recheada com carne moída e molho de tomate', 35.90, 1),
 ('Salada Caesar', 'Alface, frango grelhado, croutons e molho especial', 27.50, 2),
 ('Filé à Parmegiana', 'Filé empanado com molho e queijo, acompanhado de arroz e batata', 42.00, 1),
 ('Risoto de Cogumelos', 'Arroz arbório com cogumelos e parmesão', 38.00, 2);
+('Strogonoff de Frango', 'Frango ao molho de creme de leite com arroz e batata palha', 32.90, 3),
+('Pizza Marguerita', 'Molho de tomate, mussarela, manjericão e orégano', 45.00, 4);
+
 
 INSERT INTO pedido (id_cliente, id_prato, data_pedido, quantidade) VALUES
 (1, 1, '2025-04-15 12:30:00', 2),
