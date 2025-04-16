@@ -14,14 +14,14 @@
     "express": "^4.21.2",
     "pg": "^8.13.2"
   },
-  "name": "backend-gigabyte",
+  "name": "backend-altf4",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Joao Gabriel, Claudio Gabriel, Joao Temponi, Luis Eduardo",
+  "author": "Pedro Mendes, Tiago Filho, Vini Eduardo, Davi",
   "license": "ISC",
   "description": ""
 }
