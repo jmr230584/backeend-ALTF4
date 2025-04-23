@@ -57,7 +57,7 @@ export class Gerente {
         let listaGerentes: Array<Gerente> = [];
 
         try {
-            const query = `SELECT * FROM gerente;`;
+            const query = `SELECT * FROM gerente WHERE status_gerente = true;`;
             const resposta = await database.query(query);
 
             resposta.rows.forEach((gerente) => {
@@ -132,7 +132,7 @@ export class Gerente {
         let deleteResult = false;
 
         try {
-            const query = `DELETE FROM gerente WHERE id_gerente = ${idGerente};`;
+            const query = `UPDATE gerente SET status_gerente = false WHERE id_gerente = ${idGerente};`;
             const result = await database.query(query);
 
             if (result.rowCount !== 0) {

@@ -67,7 +67,7 @@ export class Prato {
         let listaPratos: Array<Prato> = [];
 
         try {
-            const query = `SELECT * FROM prato;`;
+            const query = `SELECT * FROM prato WHERE status_prato = true;;`;
             const resposta = await database.query(query);
 
             resposta.rows.forEach((prato) => {
@@ -145,7 +145,7 @@ export class Prato {
         let deleteResult = false;
 
         try {
-            const query = `DELETE FROM prato WHERE id_prato = ${idPrato};`;
+            const query = `UPDATE prato SET status_prato = false WHERE id_prato = ${idPrato};`;
             const result = await database.query(query);
 
             if (result.rowCount !== 0) {

@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import { DatabaseModel } from "./DataBaseModel";
 
 // Recupera conexão com o banco de dados
@@ -11,7 +10,7 @@ export class Pedido {
     private idPedido: number = 0;
     private idCliente: number;
     private idPrato: number;
-    private dataPedido: Date = new Date();
+    private dataPedido: Date;
     private quantidade: number;
 
     constructor(_idCliente: number, _idPrato: number, _dataPedido: Date, _quantidade: number) {
@@ -68,18 +67,17 @@ export class Pedido {
         let listaPedidos: Array<Pedido> = [];
 
         try {
-            const query = `SELECT * FROM pedido;`;
+            const query = `SELECT * FROM pedido WHERE status_pedido = true;`;
             const resposta = await database.query(query);
 
             resposta.rows.forEach((pedido) => {
                 let novoPedido = new Pedido(
                     pedido.id_cliente,
                     pedido.id_prato,
-                    pedido.dataPedido,
+                    pedido.data_pedido,
                     pedido.quantidade
                 );
                 novoPedido.setIdPedido(pedido.id_pedido);
-                novoPedido.setDataPedido(pedido.data_pedido);
                 listaPedidos.push(novoPedido);
             });
 
@@ -99,7 +97,6 @@ export class Pedido {
                 VALUES (
                     ${pedido.getIdCliente()},
                     ${pedido.getIdPrato()},
-                    ${pedido.getDataPedido()},
                     ${pedido.getQuantidade()}
                 )
                 RETURNING id_pedido;
@@ -126,8 +123,7 @@ export class Pedido {
                 UPDATE pedido SET
                     id_cliente = ${pedido.getIdCliente()},
                     id_prato = ${pedido.getIdPrato()},
-                    data_pedido = ${pedido.getDataPedido()},
-                    quantidade = ${pedido.getQuantidade()},
+                    quantidade = ${pedido.getQuantidade()}
                 WHERE id_pedido = ${pedido.getIdPedido()};
             `;
             const result = await database.query(query);

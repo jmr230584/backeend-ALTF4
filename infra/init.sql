@@ -29,7 +29,7 @@ CREATE TABLE pedido (
     id_pedido SERIAL PRIMARY KEY,
     id_cliente INT NOT NULL,
     id_prato INT NOT NULL,
-    data_pedido Date,
+    data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     quantidade INT,
     status_pedido BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
