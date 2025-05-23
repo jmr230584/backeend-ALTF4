@@ -4,6 +4,7 @@ import ClienteController from "./controller/ClienteController";
 import GerenteController from "./controller/GerenteController";
 import PedidoController from "./controller/PedidoController";
 import PratoController from "./controller/PratoController";
+import { Auth } from "./util/Auth";
 
 const router = express.Router();
 
@@ -37,6 +38,15 @@ router.get(SERVER_ROUTES.LISTAR_PRATOS, PratoController.todos);
 router.post(SERVER_ROUTES.NOVO_PRATO, PratoController.cadastrar);
 router.put(SERVER_ROUTES.REMOVER_PRATO, PratoController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_PRATO, PratoController.atualizar);
+
+//Login
+router.post('/login', Auth.validacaoUsuario);
+
+router.get('/', (req: Request, res: Response) => { res.send('Hello World!') });
+
+router.get('/rota-protegida', Auth.verifyToken, (req: Request, res: Response) => { res.send('Rota protegida, se você está vendo essa mensagem é porque está autenticado no sistema') });
+
+router.get('/pessoas', Auth.verifyToken, Consultas.todos);
 
 
 export { router }

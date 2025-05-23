@@ -13,4 +13,5 @@ new DatabaseModel().testeConexao().then((resdb) => {
     } else{
         console.log('Erro ao conectar ao banco de dados.');
     }
+    
 });
