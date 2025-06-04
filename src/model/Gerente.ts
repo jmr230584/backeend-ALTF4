@@ -9,11 +9,13 @@ const database = new DatabaseModel().pool;
 export class Gerente {
     private idGerente: number = 0;
     private nome: string;
+    private telefone: string;
     private email: string;
     private senha: string;
 
-    constructor(_nome: string, _email: string, _senha: string) {
+    constructor(_nome: string, _telefone: string, _email: string, _senha: string) {
         this.nome = _nome;
+        this.telefone = _telefone;
         this.email = _email;
         this.senha = _senha;
     }
@@ -33,6 +35,14 @@ export class Gerente {
 
     public setNome(nome: string): void {
         this.nome = nome;
+    }
+
+    public getTelefone(): string {
+        return this.telefone;
+    }
+
+    public setTelefone(telefone: string): void {
+        this.telefone = telefone;
     }
 
     public getEmail(): string {
@@ -63,6 +73,7 @@ export class Gerente {
             resposta.rows.forEach((gerente) => {
                 let novoGerente = new Gerente(
                     gerente.nome,
+                    gerente.telefone,
                     gerente.email,
                     gerente.senha
                 );
@@ -82,9 +93,10 @@ export class Gerente {
 
         try {
             const query = `
-                INSERT INTO gerente (nome, email, senha)
+                INSERT INTO gerente (nome, telefone, email, senha)
                 VALUES (
-                    '${gerente.getNome().toUpperCase()}',
+                    '${gerente.getNome()}',
+                    '${gerente.getTelefone()}',
                     '${gerente.getEmail().toLowerCase()}',
                     '${gerente.getSenha()}'
                 )
@@ -110,7 +122,8 @@ export class Gerente {
         try {
             const query = `
                 UPDATE gerente SET
-                    nome = '${gerente.getNome().toUpperCase()}',
+                    nome = '${gerente.getNome()}',
+                    telefone = '${gerente.getTelefone()}'
                     email = '${gerente.getEmail().toLowerCase()}',
                     senha = '${gerente.getSenha()}'
                 WHERE id_gerente = ${gerente.getIdGerente()};

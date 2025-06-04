@@ -10,6 +10,7 @@ CREATE TABLE cliente (
 CREATE TABLE gerente (
     id_gerente SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15) UNIQUE,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(100) NOT NULL,
     status_gerente BOOLEAN DEFAULT TRUE

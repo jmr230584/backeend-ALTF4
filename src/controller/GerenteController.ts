@@ -7,6 +7,7 @@ import { Request, Response } from "express";
  */
 interface GerenteDTO {
     nome: string;
+    telefone: string;
     email: string;
     senha: string;
 }
@@ -44,6 +45,7 @@ class GerenteController extends Gerente {
 
             const novoGerente = new Gerente(
                 dadosRecebidos.nome,
+                dadosRecebidos.telefone,
                 dadosRecebidos.email,
                 dadosRecebidos.senha
             );
@@ -96,6 +98,7 @@ class GerenteController extends Gerente {
 
             const gerente = new Gerente(
                 dadosRecebidos.nome,
+                dadosRecebidos.telefone,
                 dadosRecebidos.email,
                 dadosRecebidos.senha
             );
