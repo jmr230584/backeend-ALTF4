@@ -2,7 +2,7 @@ CREATE TABLE cliente (
     id_cliente SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    endereco TEXT,
+    endereco VARCHAR(100) NOT NULL,
     telefone VARCHAR(20),
     status_cliente BOOLEAN DEFAULT TRUE
 );
@@ -20,7 +20,7 @@ CREATE TABLE prato (
     id_prato SERIAL PRIMARY KEY,
     id_gerente INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
-    descricao TEXT,
+    descricao VARCHAR(100) NOT NULL,
     preco DECIMAL(10, 2) NOT NULL,
     status_prato BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (id_gerente) REFERENCES Gerente(id_gerente)
