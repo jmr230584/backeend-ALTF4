@@ -1,4 +1,6 @@
 const SERVER_ROUTES = {
+    PAGINA_INICIAL: '/',
+
     NOVO_CLIENTE: '/novo/cliente',
     ATUALIZAR_CLIENTE: '/atualiza/cliente',
     REMOVER_CLIENTE: '/remove/cliente',

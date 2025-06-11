@@ -2,6 +2,7 @@ CREATE TABLE cliente (
     id_cliente SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(100) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     telefone VARCHAR(20),
     status_cliente BOOLEAN DEFAULT TRUE
@@ -18,12 +19,10 @@ CREATE TABLE gerente (
 
 CREATE TABLE prato (
     id_prato SERIAL PRIMARY KEY,
-    id_gerente INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
     preco DECIMAL(10, 2) NOT NULL,
-    status_prato BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (id_gerente) REFERENCES Gerente(id_gerente)
+    status_prato BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE pedido (
@@ -46,21 +45,21 @@ INSERT INTO gerente (nome, telefone, email, senha) VALUES
 
 
 
-INSERT INTO cliente (nome, email, endereco, telefone) VALUES
-('João Silva', 'joao@gmail.com', 'Rua A, 123', '11988887777'),
-('Maria Oliveira', 'maria@gmail.com', 'Rua B, 456', '11999996666'),
-('Pedro Costa', 'pedro@gmail.com', 'Rua C, 789', '11977775555'),
-('Ana Beatriz', 'ana@gmail.com', 'Rua D, 321', '11966668888'),
-('Ricardo Mendes', 'ricardo@gmail.com', 'Rua E, 654', '11955554444');
+INSERT INTO cliente (nome, email, senha, endereco, telefone) VALUES
+('João Silva', 'joao@gmail.com', 'joaao2312', 'Rua A, 123', '11988887777'),
+('Maria Oliveira', 'maria@gmail.com', 'abcd1234', 'Rua B, 456', '11999996666'),
+('Pedro Costa', 'pedro@gmail.com', 'fjghus', 'Rua C, 789', '11977775555'),
+('Ana Beatriz', 'ana@gmail.com', 'aninhabananinha', 'Rua D, 321', '11966668888'),
+('Ricardo Mendes', 'ricardo@gmail.com', 'ricardaodascasadas', 'Rua E, 654', '11955554444');
 
 
-INSERT INTO prato (nome, descricao, preco, id_gerente) VALUES
-('Lasanha à Bolonhesa', 'Massa recheada com carne moída e molho de tomate', 35.90, 1),
+INSERT INTO prato (nome, descricao, preco) VALUES
+('Lasanha à Bolonhesa', 'Massa recheada com carne moída e molho de tomate', 35.90),
 ('Salada Caesar', 'Alface, frango grelhado, croutons e molho especial', 27.50, 2),
-('Filé à Parmegiana', 'Filé empanado com molho e queijo, acompanhado de arroz e batata', 42.00, 1),
-('Risoto de Cogumelos', 'Arroz arbório com cogumelos e parmesão', 38.00, 2),
-('Strogonoff de Frango', 'Frango ao molho de creme de leite com arroz e batata palha', 32.90, 3),
-('Pizza Marguerita', 'Molho de tomate, mussarela, manjericão e orégano', 45.00, 4);
+('Filé à Parmegiana', 'Filé empanado com molho e queijo, acompanhado de arroz e batata', 42.00),
+('Risoto de Cogumelos', 'Arroz arbório com cogumelos e parmesão', 38.00),
+('Strogonoff de Frango', 'Frango ao molho de creme de leite com arroz e batata palha', 32.90),
+('Pizza Marguerita', 'Molho de tomate, mussarela, manjericão e orégano', 45.00);
 
 
 INSERT INTO pedido (id_cliente, id_prato, data_pedido, quantidade) VALUES

@@ -4,6 +4,7 @@ import ClienteController from "./controller/ClienteController";
 import GerenteController from "./controller/GerenteController";
 import PedidoController from "./controller/PedidoController";
 import PratoController from "./controller/PratoController";
+import { Auth } from "./util/Auth";
 
 const router = express.Router();
 
@@ -12,17 +13,17 @@ router.get('/', (req, res) => {
 });
 
 // CRUD Cliente
-router.get(SERVER_ROUTES.LISTAR_CLIENTES, ClienteController.todos);
-router.post(SERVER_ROUTES.NOVO_CLIENTE, ClienteController.cadastrar);
-router.put(SERVER_ROUTES.REMOVER_CLIENTE, ClienteController.remover);
-router.put(SERVER_ROUTES.ATUALIZAR_CLIENTE, ClienteController.atualizar);
+router.get(SERVER_ROUTES.LISTAR_CLIENTES, Auth.verifyToken, Auth.requireGerente, ClienteController.todos);
+router.post(SERVER_ROUTES.NOVO_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.cadastrar);
+router.put(SERVER_ROUTES.REMOVER_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.remover);
+router.put(SERVER_ROUTES.ATUALIZAR_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.atualizar);
 
 
 //CRUD Gerente
-router.get(SERVER_ROUTES.LISTAR_GERENTES, GerenteController.todos);
-router.post(SERVER_ROUTES.NOVO_GERENTE, GerenteController.cadastrar);
-router.put(SERVER_ROUTES.REMOVER_GERENTE, GerenteController.remover);
-router.put(SERVER_ROUTES.ATUALIZAR_GERENTE, GerenteController.atualizar);
+router.get(SERVER_ROUTES.LISTAR_GERENTES, Auth.verifyToken, Auth.requireGerente, GerenteController.todos);
+router.post(SERVER_ROUTES.NOVO_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.cadastrar);
+router.put(SERVER_ROUTES.REMOVER_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.remover);
+router.put(SERVER_ROUTES.ATUALIZAR_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.atualizar);
 
 
 //CRUD Pedido
@@ -34,8 +35,8 @@ router.put(SERVER_ROUTES.ATUALIZAR_PEDIDO, PedidoController.atualizar);
 
 //CRUD Prato
 router.get(SERVER_ROUTES.LISTAR_PRATOS, PratoController.todos);
-router.post(SERVER_ROUTES.NOVO_PRATO, PratoController.cadastrar);
-router.put(SERVER_ROUTES.REMOVER_PRATO, PratoController.remover);
-router.put(SERVER_ROUTES.ATUALIZAR_PRATO, PratoController.atualizar);
+router.post(SERVER_ROUTES.NOVO_PRATO, Auth.verifyToken, Auth.requireGerente, PratoController.cadastrar);
+router.put(SERVER_ROUTES.REMOVER_PRATO, Auth.verifyToken, Auth.requireGerente, PratoController.remover);
+router.put(SERVER_ROUTES.ATUALIZAR_PRATO, Auth.verifyToken, Auth.requireGerente, PratoController.atualizar);
 
 export { router }
