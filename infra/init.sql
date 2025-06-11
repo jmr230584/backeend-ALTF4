@@ -37,12 +37,12 @@ CREATE TABLE pedido (
     FOREIGN KEY (id_prato) REFERENCES Prato(id_prato)
 );
 
-INSERT INTO gerente (nome, email, senha) VALUES
-('Carlos Andrade', 'carlos@restaurante.com', 'senha123'),
-('Fernanda Lima', 'fernanda@restaurante.com', 'seguro456'), 
-('Lucas Martins', 'lucas@restaurante.com', 'admin789'),
-('Juliana Rocha', 'juliana@restaurante.com', 'chef2025'),
-('Junim Péroxo', 'junimnim@restaurante.com', 'gerente123');
+INSERT INTO gerente (nome, telefone, email, senha) VALUES
+('Carlos Andrade', '168823746578', 'carlos@restaurante.com', 'senha123'),
+('Fernanda Lima', '118827364576', 'fernanda@restaurante.com', 'seguro456'), 
+('Lucas Martins', '13092736456',  'lucas@restaurante.com', 'admin789'),
+('Juliana Rocha', '11875647586', 'juliana@restaurante.com', 'chef2025'),
+('Junim Péroxo', '18657465867', 'junimnim@restaurante.com', 'gerente123');
 
 
 
