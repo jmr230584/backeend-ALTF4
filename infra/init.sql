@@ -41,7 +41,17 @@ INSERT INTO gerente (nome, telefone, email, senha) VALUES
 ('Fernanda Lima', '118827364576', 'fernanda@restaurante.com', 'seguro456'), 
 ('Lucas Martins', '13092736456',  'lucas@restaurante.com', 'admin789'),
 ('Juliana Rocha', '11875647586', 'juliana@restaurante.com', 'chef2025'),
-('Junim Péroxo', '18657465867', 'junimnim@restaurante.com', 'gerente123');
+('Junim Péroxo', '18657465867', 'junimnim@restaurante.com', 'gerente123'),
+('Ana Beatriz', '11987654321', 'ana@restaurante.com', 'senha456'),
+('Ricardo Souza', '21999887766', 'ricardo@restaurante.com', 'supervisor321'),
+('Mariana Castro', '31988776655', 'mariana@restaurante.com', 'bemvindo789'),
+('Felipe Mendes', '41977665544', 'felipe@restaurante.com', 'acesso2024'),
+('Tatiane Silva', '51966554433', 'tatiane@restaurante.com', 'seguro2025'),
+('Bruno Oliveira', '61955443322', 'bruno@restaurante.com', 'admin456'),
+('Patrícia Gomes', '71944332211', 'patricia@restaurante.com', 'senha789'),
+('Renato Almeida', '81933221100', 'renato@restaurante.com', 'entrada123'),
+('Camila Ferreira', '21922110099', 'camila@restaurante.com', 'login321'),
+('Thiago Ramos', '11911009988', 'thiago@restaurante.com', 'gerente456');
 
 
 
@@ -50,16 +60,36 @@ INSERT INTO cliente (nome, email, senha, endereco, telefone) VALUES
 ('Maria Oliveira', 'maria@gmail.com', 'abcd1234', 'Rua B, 456', '11999996666'),
 ('Pedro Costa', 'pedro@gmail.com', 'fjghus', 'Rua C, 789', '11977775555'),
 ('Ana Beatriz', 'ana@gmail.com', 'aninhabananinha', 'Rua D, 321', '11966668888'),
-('Ricardo Mendes', 'ricardo@gmail.com', 'ricardaodascasadas', 'Rua E, 654', '11955554444');
+('Ricardo Mendes', 'ricardo@gmail.com', 'ricardaodascasadas', 'Rua E, 654', '11955554444'),
+('Fernanda Lima', 'fernanda@gmail.com', 'fefelinda123', 'Rua F, 111', '11944443333'),
+('Lucas Rocha', 'lucasr@gmail.com', 'lucao2025', 'Rua G, 222', '11933332222'),
+('Juliana Souza', 'juliana@gmail.com', 'juju_brilho', 'Rua H, 333', '11922221111'),
+('Bruno Martins', 'brunom@gmail.com', 'bm2024login', 'Rua I, 444', '11911110000'),
+('Carla Dias', 'carla@gmail.com', 'carlinha456', 'Rua J, 555', '11900009999'),
+('Felipe Alves', 'felipe@gmail.com', 'felipao321', 'Rua K, 666', '11988886666'),
+('Amanda Torres', 'amanda@gmail.com', 'amandinha321', 'Rua L, 777', '11977778888'),
+('Renato Gonçalves', 'renato@gmail.com', 'r3n4t0', 'Rua M, 888', '11966667777'),
+('Patrícia Moraes', 'patricia@gmail.com', 'moraes_2024', 'Rua N, 999', '11955556666'),
+('Diego Ramos', 'diego@gmail.com', 'diegoboy987', 'Rua O, 1000', '11944445555');
 
 
 INSERT INTO prato (nome, descricao, preco) VALUES
-('Lasanha à Bolonhesa', 'Massa recheada com carne moída e molho de tomate', 35.90),
-('Salada Caesar', 'Alface, frango grelhado, croutons e molho especial', 27.50, 2),
-('Filé à Parmegiana', 'Filé empanado com molho e queijo, acompanhado de arroz e batata', 42.00),
-('Risoto de Cogumelos', 'Arroz arbório com cogumelos e parmesão', 38.00),
-('Strogonoff de Frango', 'Frango ao molho de creme de leite com arroz e batata palha', 32.90),
-('Pizza Marguerita', 'Molho de tomate, mussarela, manjericão e orégano', 45.00);
+('Hambúrguer Clássico', 'Pão com gergelim, hambúrguer bovino 150g, queijo prato, alface e tomate', 35.90),
+('Hambúrguer Caesar', 'Hambúrguer de frango empanado com molho Caesar, alface e parmesão', 27.50),
+('Hambúrguer Parmesão', 'Carne empanada com queijo derretido, molho especial e pão artesanal', 42.00),
+('Hambúrguer Funghi', 'Hambúrguer de carne com molho cremoso de cogumelos e queijo suíço', 38.00),
+('Hambúrguer Cremoso', 'Frango desfiado com creme de leite, batata palha e queijo cheddar', 32.90),
+('Hambúrguer Marguerita', 'Tomate, mussarela de búfala, manjericão e hambúrguer vegetal', 45.00),
+('Hambúrguer Alho e Óleo', 'Hambúrguer artesanal com toque de alho crocante e azeite aromático', 29.90),
+('Hambúrguer do Mar', 'Blend de peixe crocante com molho tártaro e alface americana', 49.50),
+('Hambúrguer Feijoada', 'Hambúrguer de feijão preto com bacon, couve e farofa no pão', 39.90),
+('Hambúrguer da Casa', 'Carne bovina 180g, queijo, cebola caramelizada e maionese caseira', 34.00),
+('Hambúrguer do Chef', 'Salmão grelhado, cream cheese, rúcula e pão australiano', 52.00),
+('Hambúrguer Frios', 'Blend de carnes com recheio de queijos e salame, servido com molho de mostarda', 43.70),
+('Hambúrguer Camarão', 'Camarões empanados com molho rosé e alface no pão brioche', 59.90),
+('Hambúrguer Frango Cream', 'Frango grelhado, requeijão cremoso, milho e batata palha', 28.50),
+('Hambúrguer Panqueca', 'Hambúrguer envolto em panqueca salgada com queijo e molho especial', 31.20),
+('Hambúrguer Veggie Poró', 'Grão-de-bico, alho-poró e aveia em pão integral com molho leve', 26.90);
 
 
 INSERT INTO pedido (id_cliente, id_prato, data_pedido, quantidade) VALUES
@@ -67,4 +97,14 @@ INSERT INTO pedido (id_cliente, id_prato, data_pedido, quantidade) VALUES
 (1, 2, '2025-04-15 12:35:00', 1),
 (2, 3, '2025-04-15 13:00:00', 1),
 (3, 4, '2025-04-15 13:15:00', 2),
-(2, 1, '2025-04-16 11:00:00', 1);
+(2, 1, '2025-04-16 11:00:00', 1),
+(4, 5, '2025-04-16 12:00:00', 1),
+(5, 2, '2025-04-16 12:10:00', 3),
+(3, 6, '2025-04-16 12:20:00', 2),
+(1, 7, '2025-04-16 12:30:00', 1),
+(6, 8, '2025-04-16 13:00:00', 1),
+(4, 9, '2025-04-16 13:10:00', 2),
+(2, 10, '2025-04-17 11:45:00', 1),
+(5, 3, '2025-04-17 12:15:00', 2),
+(6, 4, '2025-04-17 12:30:00', 1),
+(3, 1, '2025-04-17 13:00:00', 2);
