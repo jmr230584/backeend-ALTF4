@@ -39,4 +39,6 @@ router.post(SERVER_ROUTES.NOVO_PRATO, Auth.verifyToken, Auth.requireGerente, Pra
 router.put(SERVER_ROUTES.REMOVER_PRATO, Auth.verifyToken, Auth.requireGerente, PratoController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_PRATO, Auth.verifyToken, Auth.requireGerente, PratoController.atualizar);
 
+router.post(SERVER_ROUTES.LOGIN, Auth.validacaoUsuario);
+
 export { router }

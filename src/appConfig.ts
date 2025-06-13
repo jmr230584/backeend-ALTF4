@@ -19,7 +19,9 @@ const SERVER_ROUTES = {
     NOVO_PRATO: '/novo/prato',
     ATUALIZAR_PRATO: '/atualiza/prato',
     LISTAR_PRATOS: '/lista/pratos',
-    REMOVER_PRATO: '/remove/prato'
+    REMOVER_PRATO: '/remove/prato',
+
+    LOGIN: '/login'
 }
 
 export { SERVER_ROUTES }
