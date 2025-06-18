@@ -5,6 +5,7 @@ import GerenteController from "./controller/GerenteController";
 import PedidoController from "./controller/PedidoController";
 import PratoController from "./controller/PratoController";
 import { Auth } from "./util/Auth";
+import { uploadCapa } from "./config/multerConfig";
 
 const router = express.Router();
 
@@ -14,14 +15,14 @@ router.get('/', (req, res) => {
 
 // CRUD Cliente
 router.get(SERVER_ROUTES.LISTAR_CLIENTES, Auth.verifyToken, Auth.requireGerente, ClienteController.todos);
-router.post(SERVER_ROUTES.NOVO_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.cadastrar);
+router.post(SERVER_ROUTES.NOVO_CLIENTE, uploadCapa.single('imagemPerfil'), Auth.verifyToken, Auth.requireGerente, ClienteController.cadastrar);
 router.put(SERVER_ROUTES.REMOVER_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.atualizar);
 
 
 //CRUD Gerente
 router.get(SERVER_ROUTES.LISTAR_GERENTES, Auth.verifyToken, Auth.requireGerente, GerenteController.todos);
-router.post(SERVER_ROUTES.NOVO_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.cadastrar);
+router.post(SERVER_ROUTES.NOVO_GERENTE, uploadCapa.single('imagemPerfil'), Auth.verifyToken, Auth.requireGerente, GerenteController.cadastrar);
 router.put(SERVER_ROUTES.REMOVER_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.atualizar);
 
