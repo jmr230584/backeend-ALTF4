@@ -10,13 +10,15 @@ export class Cliente {
     private idCliente: number = 0;
     private nome: string;
     private email: string;
+    private senha: string;
     private endereco: string;
     private telefone: string;
     private statusCliente: boolean = true; // Controla o status do aluno no sistema
 
-    constructor(_nome: string, _email: string, _endereco: string, _telefone: string) {
+    constructor(_nome: string, _senha: string, _email: string, _endereco: string, _telefone: string) {
         this.nome = _nome;
         this.email = _email;
+        this.senha = _senha;
         this.endereco = _endereco;
         this.telefone = _telefone;
     }
@@ -44,6 +46,14 @@ export class Cliente {
 
     public setEmail(_email: string): void {
         this.email = _email;
+    }
+
+    public setSenha(_senha: string): void {
+        this.senha = _senha;
+    }
+
+    public getSenha(): string {
+        return this.senha;
     }
 
     public getEndereco(): string {
@@ -83,6 +93,7 @@ export class Cliente {
                 let novoCliente = new Cliente(
                     cliente.nome,
                     cliente.email,
+                    cliente.senha,
                     cliente.endereco,
                     cliente.telefone
                 );
@@ -102,10 +113,11 @@ export class Cliente {
 
         try {
             const query = `
-                INSERT INTO cliente (nome, email, endereco, telefone)
+                INSERT INTO cliente (nome, email, senha, endereco, telefone)
                 VALUES (
                     '${cliente.getNome().toUpperCase()}',
                     '${cliente.getEmail().toLowerCase()}',
+                    '${cliente.getSenha()}',
                     '${cliente.getEndereco()}',
                     '${cliente.getTelefone()}'
                 )

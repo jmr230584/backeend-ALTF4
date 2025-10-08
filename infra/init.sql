@@ -36,31 +36,12 @@ CREATE TABLE pedido (
     FOREIGN KEY (id_prato) REFERENCES Prato(id_prato)
 );
 
-<<<<<<< HEAD
-INSERT INTO gerente (nome, telefone, email, senha) VALUES
-('Carlos Andrade', '168823746578', 'carlos@restaurante.com', 'senha123'),
-('Fernanda Lima', '118827364576', 'fernanda@restaurante.com', 'seguro456'), 
-('Lucas Martins', '13092736456',  'lucas@restaurante.com', 'admin789'),
-('Juliana Rocha', '11875647586', 'juliana@restaurante.com', 'chef2025'),
-('Junim Péroxo', '18657465867', 'junimnim@restaurante.com', 'gerente123'),
-('Ana Beatriz', '11987654321', 'ana@restaurante.com', 'senha456'),
-('Ricardo Souza', '21999887766', 'ricardo@restaurante.com', 'supervisor321'),
-('Mariana Castro', '31988776655', 'mariana@restaurante.com', 'bemvindo789'),
-('Felipe Mendes', '41977665544', 'felipe@restaurante.com', 'acesso2024'),
-('Tatiane Silva', '51966554433', 'tatiane@restaurante.com', 'seguro2025'),
-('Bruno Oliveira', '61955443322', 'bruno@restaurante.com', 'admin456'),
-('Patrícia Gomes', '71944332211', 'patricia@restaurante.com', 'senha789'),
-('Renato Almeida', '81933221100', 'renato@restaurante.com', 'entrada123'),
-('Camila Ferreira', '21922110099', 'camila@restaurante.com', 'login321'),
-('Thiago Ramos', '11911009988', 'thiago@restaurante.com', 'gerente456');
-=======
     INSERT INTO gerente (nome, telefone, email, senha) VALUES
     ('Carlos Andrade', '168823746578', 'carlos@restaurante.com', 'senha123'),
     ('Fernanda Lima', '118827364576', 'fernanda@restaurante.com', 'seguro456'), 
     ('Lucas Martins', '13092736456',  'lucas@restaurante.com', 'admin789'),
     ('Juliana Rocha', '11875647586', 'juliana@restaurante.com', 'chef2025'),
     ('Junim Péroxo', '18657465867', 'junimnim@restaurante.com', 'gerente123');
->>>>>>> f5858982fa57f59c7216d8102c75e2e42b16b49a
 
 
 

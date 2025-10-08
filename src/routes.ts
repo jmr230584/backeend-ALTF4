@@ -14,14 +14,14 @@ router.get('/', (req, res) => {
 });
 
 // CRUD Cliente
-router.get(SERVER_ROUTES.LISTAR_CLIENTES, Auth.verifyToken, Auth.requireGerente, ClienteController.todos);
-router.post(SERVER_ROUTES.NOVO_CLIENTE, uploadCapa.single('imagemPerfil'), Auth.verifyToken, Auth.requireGerente, ClienteController.cadastrar);
+router.get(SERVER_ROUTES.LISTAR_CLIENTES,  ClienteController.todos);
+router.post(SERVER_ROUTES.NOVO_CLIENTE, uploadCapa.single('imagemPerfil'), ClienteController.cadastrar);
 router.put(SERVER_ROUTES.REMOVER_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_CLIENTE, Auth.verifyToken, Auth.requireGerente, ClienteController.atualizar);
 
 
 //CRUD Gerente
-router.get(SERVER_ROUTES.LISTAR_GERENTES, Auth.verifyToken, Auth.requireGerente, GerenteController.todos);
+router.get(SERVER_ROUTES.LISTAR_GERENTES,  GerenteController.todos);
 router.post(SERVER_ROUTES.NOVO_GERENTE, uploadCapa.single('imagemPerfil'), Auth.verifyToken, Auth.requireGerente, GerenteController.cadastrar);
 router.put(SERVER_ROUTES.REMOVER_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.remover);
 router.put(SERVER_ROUTES.ATUALIZAR_GERENTE, Auth.verifyToken, Auth.requireGerente, GerenteController.atualizar);

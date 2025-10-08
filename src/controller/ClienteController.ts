@@ -8,6 +8,7 @@ import { Request, Response } from "express";
 interface ClienteDTO {
     nome: string;
     email: string;
+    senha: string;
     endereco: string;
     telefone: string;
 }
@@ -46,6 +47,7 @@ class ClienteController extends Cliente {
             const novoCliente = new Cliente(
                 dadosRecebidos.nome,
                 dadosRecebidos.email,
+                dadosRecebidos.senha,
                 dadosRecebidos.endereco,
                 dadosRecebidos.telefone
             );
@@ -99,6 +101,7 @@ class ClienteController extends Cliente {
             const cliente = new Cliente(
                 dadosRecebidos.nome,
                 dadosRecebidos.email,
+                dadosRecebidos.senha,
                 dadosRecebidos.endereco,
                 dadosRecebidos.telefone
             );
