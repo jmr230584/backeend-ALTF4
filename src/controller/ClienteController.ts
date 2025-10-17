@@ -7,6 +7,12 @@ import { Request, Response } from "express";
  */
 interface ClienteDTO {
     nome: string;
+<<<<<<< HEAD
+=======
+    email: string;
+    senha: string;
+    endereco: string;
+>>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
     telefone: string;
     email: string;
     senha: string;
@@ -54,7 +60,12 @@ class ClienteController extends Cliente {
                 dadosRecebidos.telefone,
                 dadosRecebidos.email,
                 dadosRecebidos.senha,
+<<<<<<< HEAD
                 dadosRecebidos.endereco
+=======
+                dadosRecebidos.endereco,
+                dadosRecebidos.telefone
+>>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
             );
 
             const result = await Cliente.cadastrarCliente(novoCliente);
@@ -117,7 +128,12 @@ class ClienteController extends Cliente {
                 dadosRecebidos.telefone,
                 dadosRecebidos.email,
                 dadosRecebidos.senha,
+<<<<<<< HEAD
                 dadosRecebidos.endereco
+=======
+                dadosRecebidos.endereco,
+                dadosRecebidos.telefone
+>>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
             );
 
             cliente.setIdCliente(idCliente);
