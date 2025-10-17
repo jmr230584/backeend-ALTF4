@@ -9,28 +9,14 @@ const database = new DatabaseModel().pool;
 export class Cliente {
     private idCliente: number = 0;
     private nome: string;
-<<<<<<< HEAD
-=======
-    private email: string;
-    private senha: string;
-    private endereco: string;
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
     private telefone: string;
     private email: string;
     private senha: string;
     private endereco: string;
     private statusCliente: boolean = true;
 
-<<<<<<< HEAD
     constructor(_nome: string, _telefone: string, _email: string, _senha: string, _endereco: string) {
         this.nome = _nome;
-=======
-    constructor(_nome: string, _senha: string, _email: string, _endereco: string, _telefone: string) {
-        this.nome = _nome;
-        this.email = _email;
-        this.senha = _senha;
-        this.endereco = _endereco;
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
         this.telefone = _telefone;
         this.email = _email;
         this.senha = _senha;
@@ -50,37 +36,8 @@ export class Cliente {
         return this.nome;
     }
 
-<<<<<<< HEAD
     public setNome(nome: string): void {
         this.nome = nome;
-=======
-    public setNome(_nome: string): void {
-        this.nome = _nome;
-    }
-
-    public getEmail(): string {
-        return this.email;
-    }
-
-    public setEmail(_email: string): void {
-        this.email = _email;
-    }
-
-    public setSenha(_senha: string): void {
-        this.senha = _senha;
-    }
-
-    public getSenha(): string {
-        return this.senha;
-    }
-
-    public getEndereco(): string {
-        return this.endereco;
-    }
-
-    public setEndereco(_endereco: string): void {
-        this.endereco = _endereco;
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
     }
 
     public getTelefone(): string {
@@ -138,12 +95,7 @@ export class Cliente {
                     cliente.telefone,
                     cliente.email,
                     cliente.senha,
-<<<<<<< HEAD
                     cliente.endereco
-=======
-                    cliente.endereco,
-                    cliente.telefone
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
                 );
                 novoCliente.setIdCliente(cliente.id_cliente);
                 listaClientes.push(novoCliente);
@@ -171,12 +123,7 @@ export class Cliente {
                     '${cliente.getTelefone()}',
                     '${cliente.getEmail().toLowerCase()}',
                     '${cliente.getSenha()}',
-<<<<<<< HEAD
                     '${cliente.getEndereco()}'
-=======
-                    '${cliente.getEndereco()}',
-                    '${cliente.getTelefone()}'
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
                 )
                 RETURNING id_cliente;
             `;
