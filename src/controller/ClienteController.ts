@@ -7,9 +7,10 @@ import { Request, Response } from "express";
  */
 interface ClienteDTO {
     nome: string;
-    email: string;
-    endereco: string;
     telefone: string;
+    email: string;
+    senha: string;
+    endereco: string;
 }
 
 /**
@@ -29,7 +30,7 @@ class ClienteController extends Cliente {
             res.status(200).json(listaDeClientes);
         } catch (error) {
             console.log(`Erro ao acessar método herdado: ${error}`);
-            res.status(400).json("Erro ao recuperar as informações do Cliente");
+            res.status(400).json("Erro ao recuperar as informações dos clientes");
         }
     }
 
@@ -43,11 +44,17 @@ class ClienteController extends Cliente {
         try {
             const dadosRecebidos: ClienteDTO = req.body;
 
+            // Verifica se todos os campos obrigatórios foram enviados
+            if (!dadosRecebidos.nome || !dadosRecebidos.email || !dadosRecebidos.telefone || !dadosRecebidos.senha || !dadosRecebidos.endereco) {
+                return res.status(400).json("Campos obrigatórios não preenchidos");
+            }
+
             const novoCliente = new Cliente(
                 dadosRecebidos.nome,
+                dadosRecebidos.telefone,
                 dadosRecebidos.email,
-                dadosRecebidos.endereco,
-                dadosRecebidos.telefone
+                dadosRecebidos.senha,
+                dadosRecebidos.endereco
             );
 
             const result = await Cliente.cadastrarCliente(novoCliente);
@@ -58,8 +65,8 @@ class ClienteController extends Cliente {
                 return res.status(400).json("Não foi possível cadastrar o cliente no banco de dados");
             }
         } catch (error) {
-            console.log(`Erro ao cadastrar o cliente: ${error}`);
-            return res.status(400).json("Erro ao cadastrar o cliente");
+            console.error(`Erro ao cadastrar o cliente: ${error}`);
+            return res.status(500).json("Erro interno ao cadastrar o cliente");
         }
     }
 
@@ -72,6 +79,11 @@ class ClienteController extends Cliente {
     static async remover(req: Request, res: Response): Promise<any> {
         try {
             const idCliente = parseInt(req.query.idCliente as string);
+
+            if (isNaN(idCliente)) {
+                return res.status(400).json("ID do cliente inválido");
+            }
+
             const result = await Cliente.removerCliente(idCliente);
 
             if (result) {
@@ -80,14 +92,13 @@ class ClienteController extends Cliente {
                 return res.status(400).json("Erro ao deletar cliente");
             }
         } catch (error) {
-            console.log("Erro ao remover o Cliente");
-            console.log(error);
-            return res.status(500).send("error");
+            console.error("Erro ao remover o cliente:", error);
+            return res.status(500).json("Erro interno ao remover o cliente");
         }
     }
 
     /**
-     * Método para atualizar o cadastro de um cliente.
+     * Atualiza o cadastro de um cliente.
      * @param req Objeto de requisição do Express.
      * @param res Objeto de resposta do Express.
      * @returns Resposta HTTP indicando sucesso ou falha.
@@ -95,15 +106,21 @@ class ClienteController extends Cliente {
     static async atualizar(req: Request, res: Response): Promise<any> {
         try {
             const dadosRecebidos: ClienteDTO = req.body;
+            const idCliente = parseInt(req.query.idCliente as string);
+
+            if (isNaN(idCliente)) {
+                return res.status(400).json("ID do cliente inválido");
+            }
 
             const cliente = new Cliente(
                 dadosRecebidos.nome,
+                dadosRecebidos.telefone,
                 dadosRecebidos.email,
-                dadosRecebidos.endereco,
-                dadosRecebidos.telefone
+                dadosRecebidos.senha,
+                dadosRecebidos.endereco
             );
 
-            cliente.setIdCliente(parseInt(req.query.idCliente as string));
+            cliente.setIdCliente(idCliente);
 
             if (await Cliente.atualizarCliente(cliente)) {
                 return res.status(200).json({ mensagem: "Cadastro atualizado com sucesso!" });
@@ -111,8 +128,8 @@ class ClienteController extends Cliente {
                 return res.status(400).json("Não foi possível atualizar o cliente no banco de dados");
             }
         } catch (error) {
-            console.error(`Erro no modelo: ${error}`);
-            return res.json({ mensagem: "Erro ao atualizar cliente." });
+            console.error(`Erro ao atualizar o cliente: ${error}`);
+            return res.status(500).json({ mensagem: "Erro interno ao atualizar o cliente." });
         }
     }
 }

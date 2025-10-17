@@ -9,16 +9,18 @@ const database = new DatabaseModel().pool;
 export class Cliente {
     private idCliente: number = 0;
     private nome: string;
-    private email: string;
-    private endereco: string;
     private telefone: string;
-    private statusCliente: boolean = true; // Controla o status do aluno no sistema
+    private email: string;
+    private senha: string;
+    private endereco: string;
+    private statusCliente: boolean = true;
 
-    constructor(_nome: string, _email: string, _endereco: string, _telefone: string) {
+    constructor(_nome: string, _telefone: string, _email: string, _senha: string, _endereco: string) {
         this.nome = _nome;
-        this.email = _email;
-        this.endereco = _endereco;
         this.telefone = _telefone;
+        this.email = _email;
+        this.senha = _senha;
+        this.endereco = _endereco;
     }
 
     // Getters e Setters
@@ -34,57 +36,66 @@ export class Cliente {
         return this.nome;
     }
 
-    public setNome(_nome: string): void {
-        this.nome = _nome;
-    }
-
-    public getEmail(): string {
-        return this.email;
-    }
-
-    public setEmail(_email: string): void {
-        this.email = _email;
-    }
-
-    public getEndereco(): string {
-        return this.endereco;
-    }
-
-    public setEndereco(_endereco: string): void {
-        this.endereco = _endereco;
+    public setNome(nome: string): void {
+        this.nome = nome;
     }
 
     public getTelefone(): string {
         return this.telefone;
     }
 
-    public setTelefone(_telefone: string): void {
-        this.telefone = _telefone;
+    public setTelefone(telefone: string): void {
+        this.telefone = telefone;
     }
 
-    public getStatusAluno(): boolean {
+    public getEmail(): string {
+        return this.email;
+    }
+
+    public setEmail(email: string): void {
+        this.email = email;
+    }
+
+    public getSenha(): string {
+        return this.senha;
+    }
+
+    public setSenha(senha: string): void {
+        this.senha = senha;
+    }
+
+    public getEndereco(): string {
+        return this.endereco;
+    }
+
+    public setEndereco(endereco: string): void {
+        this.endereco = endereco;
+    }
+
+    public getStatusCliente(): boolean {
         return this.statusCliente;
     }
 
-    public setStatusAluno(_statusCliente: boolean) {
-        this.statusCliente = _statusCliente;
+    public setStatusCliente(status: boolean): void {
+        this.statusCliente = status;
     }
 
     // CRUD
 
     static async listarClientes(): Promise<Array<Cliente> | null> {
-        let listaClientes: Array<Cliente> = [];
+        const listaClientes: Array<Cliente> = [];
 
         try {
             const query = `SELECT * FROM cliente WHERE status_cliente = true;`;
             const resposta = await database.query(query);
 
             resposta.rows.forEach((cliente) => {
-                let novoCliente = new Cliente(
+                const novoCliente = new Cliente(
                     cliente.nome,
+                    cliente.telefone,
                     cliente.email,
-                    cliente.endereco,
-                    cliente.telefone
+                    cliente.senha,
+                    cliente.endereco
                 );
                 novoCliente.setIdCliente(cliente.id_cliente);
                 listaClientes.push(novoCliente);
@@ -102,18 +113,18 @@ export class Cliente {
 
         try {
             const query = `
-                INSERT INTO cliente (nome, email, endereco, telefone)
+                INSERT INTO cliente (nome, telefone, email, senha, endereco)
                 VALUES (
                     '${cliente.getNome().toUpperCase()}',
+                    '${cliente.getTelefone()}',
                     '${cliente.getEmail().toLowerCase()}',
-                    '${cliente.getEndereco()}',
-                    '${cliente.getTelefone()}'
+                    '${cliente.getSenha()}',
+                    '${cliente.getEndereco()}'
                 )
-                RETURNING id_cliente;`;
+                RETURNING id_cliente;
+            `;
 
-            console.log('executando a query: ', query)
             const result = await database.query(query);
-            console.log('query executada');
 
             if (result.rows.length > 0) {
                 console.log(`Cliente cadastrado com sucesso. ID: ${result.rows[0].id_cliente}`);
@@ -134,9 +145,10 @@ export class Cliente {
             const query = `
                 UPDATE cliente SET
                     nome = '${cliente.getNome().toUpperCase()}',
+                    telefone = '${cliente.getTelefone()}',
                     email = '${cliente.getEmail().toLowerCase()}',
-                    endereco = '${cliente.getEndereco()}',
-                    telefone = '${cliente.getTelefone()}'
+                    senha = '${cliente.getSenha()}',
+                    endereco = '${cliente.getEndereco()}'
                 WHERE id_cliente = ${cliente.getIdCliente()};
             `;
 
