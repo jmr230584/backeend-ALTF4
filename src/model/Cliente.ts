@@ -113,11 +113,7 @@ export class Cliente {
 
         try {
             const query = `
-<<<<<<< HEAD
                 INSERT INTO cliente (nome, telefone, email, senha, endereco)
-=======
-                INSERT INTO cliente (nome, email, senha, endereco, telefone)
->>>>>>> 59addb49a0fe641e8efecddf57ed051ec098fd30
                 VALUES (
                     '${cliente.getNome().toUpperCase()}',
                     '${cliente.getTelefone()}',

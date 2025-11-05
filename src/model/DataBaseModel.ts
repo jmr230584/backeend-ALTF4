@@ -35,7 +35,7 @@ export class DatabaseModel {
             password: process.env.DB_PASSWORD,
             port: process.env.DB_PORT,
             max: 10,
-            idleTimoutMillis: 10000
+            idleTimeoutMillis: 10000
         }
 
         // Inicialização do pool de conexões
