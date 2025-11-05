@@ -19,10 +19,12 @@ CREATE TABLE gerente (
 
 CREATE TABLE prato (
     id_prato SERIAL PRIMARY KEY,
+	id_gerente INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
     preco DECIMAL(10, 2) NOT NULL,
-    status_prato BOOLEAN DEFAULT TRUE
+    status_prato BOOLEAN DEFAULT TRUE,
+	FOREIGN KEY (id_gerente) REFERENCES gerente(id_gerente)
 );
 
 CREATE TABLE pedido (
@@ -63,23 +65,23 @@ INSERT INTO cliente (nome, email, senha, endereco, telefone) VALUES
 ('Diego Ramos', 'diego@gmail.com', 'diegoboy987', 'Rua O, 1000', '11944445555');
 
 
-INSERT INTO prato (nome, descricao, preco) VALUES
-('Hambúrguer Clássico', 'Pão com gergelim, hambúrguer bovino 150g, queijo prato, alface e tomate', 35.90),
-('Hambúrguer Caesar', 'Hambúrguer de frango empanado com molho Caesar, alface e parmesão', 27.50),
-('Hambúrguer Parmesão', 'Carne empanada com queijo derretido, molho especial e pão artesanal', 42.00),
-('Hambúrguer Funghi', 'Hambúrguer de carne com molho cremoso de cogumelos e queijo suíço', 38.00),
-('Hambúrguer Cremoso', 'Frango desfiado com creme de leite, batata palha e queijo cheddar', 32.90),
-('Hambúrguer Marguerita', 'Tomate, mussarela de búfala, manjericão e hambúrguer vegetal', 45.00),
-('Hambúrguer Alho e Óleo', 'Hambúrguer artesanal com toque de alho crocante e azeite aromático', 29.90),
-('Hambúrguer do Mar', 'Blend de peixe crocante com molho tártaro e alface americana', 49.50),
-('Hambúrguer Feijoada', 'Hambúrguer de feijão preto com bacon, couve e farofa no pão', 39.90),
-('Hambúrguer da Casa', 'Carne bovina 180g, queijo, cebola caramelizada e maionese caseira', 34.00),
-('Hambúrguer do Chef', 'Salmão grelhado, cream cheese, rúcula e pão australiano', 52.00),
-('Hambúrguer Frios', 'Blend de carnes com recheio de queijos e salame, servido com molho de mostarda', 43.70),
-('Hambúrguer Camarão', 'Camarões empanados com molho rosé e alface no pão brioche', 59.90),
-('Hambúrguer Frango Cream', 'Frango grelhado, requeijão cremoso, milho e batata palha', 28.50),
-('Hambúrguer Panqueca', 'Hambúrguer envolto em panqueca salgada com queijo e molho especial', 31.20),
-('Hambúrguer Veggie Poró', 'Grão-de-bico, alho-poró e aveia em pão integral com molho leve', 26.90);
+INSERT INTO prato (nome, descricao, preco, id_gerente) VALUES
+('Hambúrguer Clássico', 'Pão com gergelim, hambúrguer bovino 150g, queijo prato, alface e tomate', 35.90, 1),
+('Hambúrguer Caesar', 'Hambúrguer de frango empanado com molho Caesar, alface e parmesão', 27.50, 2),
+('Hambúrguer Parmesão', 'Carne empanada com queijo derretido, molho especial e pão artesanal', 42.00, 3),
+('Hambúrguer Funghi', 'Hambúrguer de carne com molho cremoso de cogumelos e queijo suíço', 38.00, 4),
+('Hambúrguer Cremoso', 'Frango desfiado com creme de leite, batata palha e queijo cheddar', 32.90, 5),
+('Hambúrguer Marguerita', 'Tomate, mussarela de búfala, manjericão e hambúrguer vegetal', 45.00, 4),
+('Hambúrguer Alho e Óleo', 'Hambúrguer artesanal com toque de alho crocante e azeite aromático', 29.90, 3),
+('Hambúrguer do Mar', 'Blend de peixe crocante com molho tártaro e alface americana', 49.50, 2),
+('Hambúrguer Feijoada', 'Hambúrguer de feijão preto com bacon, couve e farofa no pão', 39.90, 5),
+('Hambúrguer da Casa', 'Carne bovina 180g, queijo, cebola caramelizada e maionese caseira', 34.00, 2),
+('Hambúrguer do Chef', 'Salmão grelhado, cream cheese, rúcula e pão australiano', 52.00, 5),
+('Hambúrguer Frios', 'Blend de carnes com recheio de queijos e salame, servido com molho de mostarda', 43.70, 5),
+('Hambúrguer Camarão', 'Camarões empanados com molho rosé e alface no pão brioche', 59.90, 5),
+('Hambúrguer Frango Cream', 'Frango grelhado, requeijão cremoso, milho e batata palha', 28.50, 1),
+('Hambúrguer Panqueca', 'Hambúrguer envolto em panqueca salgada com queijo e molho especial', 31.20, 3),
+('Hambúrguer Veggie Poró', 'Grão-de-bico, alho-poró e aveia em pão integral com molho leve', 26.90, 2);
 
 
 INSERT INTO pedido (id_cliente, id_prato, data_pedido, quantidade) VALUES
