@@ -5,6 +5,7 @@ CREATE TABLE cliente (
     senha VARCHAR(100) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     telefone VARCHAR(20),
+    foto_frente TEXT,
     status_cliente BOOLEAN DEFAULT TRUE
 );
 
@@ -14,6 +15,7 @@ CREATE TABLE gerente (
     telefone VARCHAR(15) UNIQUE,
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(100) NOT NULL,
+    foto_frente TEXT,
     status_gerente BOOLEAN DEFAULT TRUE
 );
 
@@ -23,6 +25,7 @@ CREATE TABLE prato (
     nome VARCHAR(100) NOT NULL,
     descricao VARCHAR(100) NOT NULL,
     preco DECIMAL(10, 2) NOT NULL,
+    foto_frente TEXT,
     status_prato BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (id_gerente) REFERENCES gerente(id_gerente)
 );
